@@ -1,0 +1,114 @@
+/* Общие стили для всего сайта */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Стилизация шапки */
+header {
+    background-color: #ffffff;
+    border-bottom: 2px solid #eeeeee;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    color: #333;
+}
+
+/* Стилизация навигационного меню */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #f8f8f8;
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+nav ul li a:hover {
+    background-color: #eeeeee;
+}
+
+/* Стилизация основного содержимого */
+main {
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+main h2 {
+    border-bottom: 2px solid #eeeeee;
+    padding-bottom: 10px;
+    color: #444444;
+}
+
+/* Стилизация статей/разделов на странице */
+article {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-left: 4px solid #007bff;
+    background-color: #f9f9f9;
+}
+
+article h3 {
+    color: #333333;
+    margin-top: 0;
+}
+
+/* Стилизация изображений в статьях */
+article img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+
+/* Стилизация подвала */
+footer {
+    background-color: #333333;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Стилизация ссылок в подвале */
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Дополнительные стили для улучшения визуального восприятия */
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
