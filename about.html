@@ -21,6 +21,12 @@
         .slide {
             min-width: 100%;
             transition: opacity 0.5s ease;
+            opacity: 0; /* Делает все слайды невидимыми по умолчанию */
+        }
+
+        /* Добавляем стиль для активного слайда */
+        .slide.active {
+            opacity: 1;
         }
     </style>
 </head>
@@ -45,7 +51,7 @@
         <!-- Слайдер для демонстрации изображений отдела кадров -->
         <div class="slider" id="slider">
             <div class="slides">
-                <div class="slide"><img src="images/team_photo.jpg" alt="Команда отдела кадров"></div>
+                <div class="slide active"><img src="images/team_photo.jpg" alt="Команда отдела кадров"></div>
                 <div class="slide"><img src="images/training_session.jpg" alt="Тренинги и обучение"></div>
                 <div class="slide"><img src="images/office_space.jpg" alt="Офисное пространство"></div>
             </div>
@@ -66,9 +72,9 @@
         const totalSlides = slides.length;
 
         function nextSlide() {
-            slides[currentIndex].style.opacity = 0;
+            slides[currentIndex].classList.remove('active');
             currentIndex = (currentIndex + 1) % totalSlides;
-            slides[currentIndex].style.opacity = 1;
+            slides[currentIndex].classList.add('active');
         }
 
         setInterval(nextSlide, 3000); // Смена слайда каждые 3 секунды
