@@ -5,19 +5,43 @@
     <title>О отделе кадров - Компания "Рога и Копыта"</title>
     <link rel="stylesheet" href="css/styles.css">
     <style>
-        .gallery-container {
+        /* Стили для карусели */
+        .carousel-container {
             max-width: 600px;
             margin: 20px auto;
-            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .gallery-img {
+        .carousel-slide {
+            display: none;
             width: 100%;
-            display: none; /* Скрыть все изображения по умолчанию */
+            transition: transform 0.5s ease;
         }
 
-        .gallery-img.active {
-            display: block; /* Показать активное изображение */
+        .carousel-slide.active {
+            display: block;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .carousel-button {
+            border: none;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .carousel-button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
         }
     </style>
 </head>
@@ -39,11 +63,16 @@
         <h2>О отделе кадров</h2>
         <p>Отдел кадров компании "Рога и Копыта" играет ключевую роль в подборе, обучении и развитии персонала. Мы стремимся создать среду, где каждый сотрудник сможет раскрыть свой потенциал.</p>
 
-        <!-- Галерея изображений -->
-        <div class="gallery-container" id="gallery">
-            <img class="gallery-img active" src="images/team_photo.jpg" alt="Команда отдела кадров">
-            <img class="gallery-img" src="images/training_session.jpg" alt="Тренинги и обучение">
-            <img class="gallery-img" src="images/office_space.jpg" alt="Офисное пространство">
+        <!-- Карусель изображений -->
+        <div class="carousel-container" id="carousel">
+            <div class="carousel-slide active"><img src="images/team_photo.jpg" alt="Команда отдела кадров"></div>
+            <div class="carousel-slide"><img src="images/training_session.jpg" alt="Тренинги и обучение"></div>
+            <div class="carousel-slide"><img src="images/office_space.jpg" alt="Офисное пространство"></div>
+            
+            <div class="carousel-controls">
+                <button class="carousel-button" id="prevBtn">&#10094;</button>
+                <button class="carousel-button" id="nextBtn">&#10095;</button>
+            </div>
         </div>
 
         <h2>Наши ценности</h2>
@@ -55,15 +84,29 @@
     </footer>
 
     <script>
-        const gallery = document.getElementById('gallery');
-        gallery.addEventListener('click', function() {
-            const current = gallery.querySelector('.active');
-            current.classList.remove('active');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slides = document.querySelectorAll('.carousel-slide');
 
-            // Переключиться на следующее изображение или вернуться к первому
-            const next = current.nextElementSibling || gallery.firstElementChild;
-            next.classList.add('active');
-        });
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
     </script>
 </body>
 </html>
