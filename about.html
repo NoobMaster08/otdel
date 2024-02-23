@@ -5,28 +5,19 @@
     <title>О отделе кадров - Компания "Рога и Копыта"</title>
     <link rel="stylesheet" href="css/styles.css">
     <style>
-        /* Стили для слайдера */
-        .slider {
-            position: relative;
+        .gallery-container {
             max-width: 600px;
             margin: 20px auto;
+            text-align: center;
         }
 
-        .slides {
-            display: flex;
-            overflow: hidden;
-            transition: transform 0.5s ease;
+        .gallery-img {
+            width: 100%;
+            display: none; /* Скрыть все изображения по умолчанию */
         }
 
-        .slide {
-            min-width: 100%;
-            transition: opacity 0.5s ease;
-            opacity: 0; /* Делает все слайды невидимыми по умолчанию */
-        }
-
-        /* Добавляем стиль для активного слайда */
-        .slide.active {
-            opacity: 1;
+        .gallery-img.active {
+            display: block; /* Показать активное изображение */
         }
     </style>
 </head>
@@ -48,13 +39,11 @@
         <h2>О отделе кадров</h2>
         <p>Отдел кадров компании "Рога и Копыта" играет ключевую роль в подборе, обучении и развитии персонала. Мы стремимся создать среду, где каждый сотрудник сможет раскрыть свой потенциал.</p>
 
-        <!-- Слайдер для демонстрации изображений отдела кадров -->
-        <div class="slider" id="slider">
-            <div class="slides">
-                <div class="slide active"><img src="images/team_photo.jpg" alt="Команда отдела кадров"></div>
-                <div class="slide"><img src="images/training_session.jpg" alt="Тренинги и обучение"></div>
-                <div class="slide"><img src="images/office_space.jpg" alt="Офисное пространство"></div>
-            </div>
+        <!-- Галерея изображений -->
+        <div class="gallery-container" id="gallery">
+            <img class="gallery-img active" src="images/team_photo.jpg" alt="Команда отдела кадров">
+            <img class="gallery-img" src="images/training_session.jpg" alt="Тренинги и обучение">
+            <img class="gallery-img" src="images/office_space.jpg" alt="Офисное пространство">
         </div>
 
         <h2>Наши ценности</h2>
@@ -66,18 +55,15 @@
     </footer>
 
     <script>
-        // Простой скрипт для слайдера
-        let currentIndex = 0;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
+        const gallery = document.getElementById('gallery');
+        gallery.addEventListener('click', function() {
+            const current = gallery.querySelector('.active');
+            current.classList.remove('active');
 
-        function nextSlide() {
-            slides[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % totalSlides;
-            slides[currentIndex].classList.add('active');
-        }
-
-        setInterval(nextSlide, 3000); // Смена слайда каждые 3 секунды
+            // Переключиться на следующее изображение или вернуться к первому
+            const next = current.nextElementSibling || gallery.firstElementChild;
+            next.classList.add('active');
+        });
     </script>
 </body>
 </html>
