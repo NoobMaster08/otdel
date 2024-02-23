@@ -38,18 +38,30 @@
         <section>
             <h2>Как присоединиться к нашей команде</h2>
             <p>Если вы заинтересованы в карьере в нашей компании и хотите стать частью дружного коллектива профессионалов, ознакомьтесь с открытыми вакансиями и заполните анкету для кандидатов. Мы всегда рады талантливым и амбициозным специалистам.</p>
-            <!-- Предполагаемая форма для кандидатов может выглядеть так: -->
+            <!-- Обновленная форма для кандидатов -->
             <form action="#" method="post">
-                <label for="name">Имя:</label>
-                <input type="text" id="name" name="name" required>
+                <label for="fullname">ФИО:</label>
+                <input type="text" id="fullname" name="fullname" required>
+
+                <label for="birthdate">Дата рождения:</label>
+                <input type="date" id="birthdate" name="birthdate" required>
+
+                <label for="residence">Место жительства:</label>
+                <input type="text" id="residence" name="residence" required>
+
+                <label for="education">Образование:</label>
+                <input type="text" id="education" name="education" required>
+
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
+
                 <label for="position">Выбор позиции:</label>
                 <select id="position" name="position">
                     <option value="management">Управление</option>
                     <option value="development">Разработка</option>
                     <option value="sales">Продажи</option>
                 </select>
+
                 <input type="submit" value="Отправить">
             </form>
         </section>
